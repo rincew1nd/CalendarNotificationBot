@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarNotificationBot.App", "CalendarNotificationBot.App\CalendarNotificationBot.App.csproj", "{2944ADBB-54BE-41BF-BE11-50FF295A2B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarNotificationBot.Data", "CalendarNotificationBot.Data\CalendarNotificationBot.Data.csproj", "{D939B288-B586-4353-BCDC-6DE91D0D568A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarNotificationBot.Domain", "CalendarNotificationBot.Domain\CalendarNotificationBot.Domain.csproj", "{8F279235-8F10-44CF-AD63-95FBAE6D811B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarNotificationBot.Infrastructure", "CalendarNotificationBot.Infrastructure\CalendarNotificationBot.Infrastructure.csproj", "{2E94C72D-DC83-4EED-B596-EE1589174CF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarNotificationBot.Test", "CalendarNotificationBot.Test\CalendarNotificationBot.Test.csproj", "{C6905095-EB1F-4877-97AB-A26173E23696}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2944ADBB-54BE-41BF-BE11-50FF295A2B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2944ADBB-54BE-41BF-BE11-50FF295A2B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2944ADBB-54BE-41BF-BE11-50FF295A2B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2944ADBB-54BE-41BF-BE11-50FF295A2B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D939B288-B586-4353-BCDC-6DE91D0D568A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D939B288-B586-4353-BCDC-6DE91D0D568A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D939B288-B586-4353-BCDC-6DE91D0D568A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D939B288-B586-4353-BCDC-6DE91D0D568A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F279235-8F10-44CF-AD63-95FBAE6D811B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F279235-8F10-44CF-AD63-95FBAE6D811B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F279235-8F10-44CF-AD63-95FBAE6D811B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F279235-8F10-44CF-AD63-95FBAE6D811B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E94C72D-DC83-4EED-B596-EE1589174CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E94C72D-DC83-4EED-B596-EE1589174CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E94C72D-DC83-4EED-B596-EE1589174CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E94C72D-DC83-4EED-B596-EE1589174CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6905095-EB1F-4877-97AB-A26173E23696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6905095-EB1F-4877-97AB-A26173E23696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6905095-EB1F-4877-97AB-A26173E23696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6905095-EB1F-4877-97AB-A26173E23696}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

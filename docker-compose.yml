@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  calendar-notification-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="UpdateCalendar_Menu" xml:space="preserve">
+        <value>Обновить календарь</value>
+    </data>
+    <data name="DeleteCalendar_Menu" xml:space="preserve">
+        <value>Удалить календарь</value>
+    </data>
+    <data name="Information_Menu" xml:space="preserve">
+        <value>Информация</value>
+    </data>
+    <data name="UpdateContactData_Menu" xml:space="preserve">
+        <value>Обновить контактные данные</value>
+    </data>
+    <data name="UpdateContactDataFromAccount_Menu" xml:space="preserve">
+        <value>Обновить контактные данные через контакты</value>
+    </data>
+    <data name="ChangeTimezone_Menu" xml:space="preserve">
+        <value>Установить часовой пояс</value>
+    </data>
+    <data name="ChooseAction_Menu" xml:space="preserve">
+        <value>Выберите действие:</value>
+    </data>
+    <data name="Registration_Message" xml:space="preserve">
+        <value>Данный бот предназначен для нотификации пользователей о предстоящих событиях в предоставленном календаре.
+Календарь предоставляется ссылкой на .ICS файл, который можно найти как в битриксе так и на других платформах.</value>
+    </data>
+    <data name="UpdateCalendar_Message" xml:space="preserve">
+        <value>Предоставьте ссылку на календарь.
+Для экспорта календаря в битрексе необходимо пройти по следующему пути: Профиль -&gt; Календарь -&gt; Календари -&gt; Три точки напротив нужного календаря -&gt; Экспорт iCal -&gt; Копировать ссылку</value>
+    </data>
+    <data name="UpdateTimezone_Message" xml:space="preserve">
+        <value>Введите ваш часовой пояс в формате *GMT-\+0*.
+Например *GMT-0*, *GMT+3*.</value>
+    </data>
+    <data name="CalendarDeleted_Message" xml:space="preserve">
+        <value>Календарь удалён</value>
+    </data>
+    <data name="CalendarNotDeleted_Message" xml:space="preserve">
+        <value>Календарь не был удалён так как пользователь или календарь не найден</value>
+    </data>
+    <data name="ContactData_Menu" xml:space="preserve">
+        <value>Поделиться контактными данные телеграм</value>
+    </data>
+    <data name="ShareContactData_Message" xml:space="preserve">
+        <value>Отправьте контактные данные в бота для регистрации</value>
+    </data>
+    <data name="CalendarUpdated_Message" xml:space="preserve">
+        <value>Календарь обновлён</value>
+    </data>
+    <data name="UserNotFound_Message" xml:space="preserve">
+        <value>Пользователь не найден</value>
+    </data>
+    <data name="MalformedLink_Message" xml:space="preserve">
+        <value>Ссылка на календарь в неправильном формате.
+            Необходимо отправить только ссылку на скачивание файла с расширением .ICS</value>
+    </data>
+    <data name="DataUpdated_Message" xml:space="preserve">
+        <value>Данные обновлены успешно</value>
+    </data>
+    <data name="DataNotUpdated_Message" xml:space="preserve">
+        <value>Данные не обновлены</value>
+    </data>
+    <data name="TimezoneChanged_Message" xml:space="preserve">
+        <value>Для пользователя установлена таймзона '{0}'</value>
+    </data>
+    <data name="UserInfo_Message" xml:space="preserve">
+        <value>*Тэг пользователя*\: {0}
+*Имя*\: {1} {2}
+*Id пользователя*\: {3}
+*Id чата*\: {4}
+{5}
+*Часовой пояс*\: {6}
+*Язык*\: {7}
+*Время оповещения*\: за {8} минут</value>
+    </data>
+    <data name="CalendarNotFound_Message" xml:space="preserve">
+        <value>*Календарь отсутствует*</value>
+    </data>
+    <data name="CalendarLink_Message" xml:space="preserve">
+        <value>Ссылка на календарь</value>
+    </data>
+    <data name="TimezoneLimit_Message" xml:space="preserve">
+        <value>Часовой пояс должен быть в пределах от GMT-12 до GMT+15</value>
+    </data>
+    <data name="CalendarEvent_Message" xml:space="preserve">
+        <value>&lt;b&gt;{0}&lt;/b&gt;
+&lt;b&gt;Статус&lt;/b&gt;: {1}
+&lt;b&gt;Описание&lt;/b&gt;: {2}
+&lt;b&gt;Местоположение&lt;/b&gt;: {3}
+&lt;b&gt;Дата начала&lt;/b&gt;: {4}
+&lt;b&gt;Продолжительность&lt;/b&gt;: {5} минут ({6})</value>
+    </data>
+    <data name="UpdateNotificationTime_Message" xml:space="preserve">
+        <value>Укажите желаемое время оповещения о событии в минутах.
+Минимальное значение - 2, Максимальное значение - 1440, Стандартное - 15</value>
+    </data>
+    <data name="IncorrectNotificationTime_Message" xml:space="preserve">
+        <value>Пожалуйста укажите число между 2 и 1440.</value>
+    </data>
+    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
+        <value>Обновить время оповещения</value>
+    </data>
+</root>

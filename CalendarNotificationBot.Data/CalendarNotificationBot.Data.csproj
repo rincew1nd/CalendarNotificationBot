@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+        <PackageReference Include="FluentMigrator.Runner.Core" Version="6.2.0" />
+        <PackageReference Include="FluentMigrator.Runner.Postgres" Version="6.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.2" />
+        <PackageReference Include="Npgsql" Version="9.0.2" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\CalendarNotificationBot.Infrastructure\CalendarNotificationBot.Infrastructure.csproj" />
+    </ItemGroup>
+    
+</Project>

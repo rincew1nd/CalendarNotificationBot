@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Cronos" Version="0.7.1" />
+        <PackageReference Include="Ical.Net" Version="4.2.0" />
+        <PackageReference Include="MediatR" Version="12.4.1" />
+        <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.2" />
+        <PackageReference Include="Telegram.Bot" Version="22.4.3" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\CalendarNotificationBot.Data\CalendarNotificationBot.Data.csproj" />
+        <ProjectReference Include="..\CalendarNotificationBot.Infrastructure\CalendarNotificationBot.Infrastructure.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Resources.SharedResource.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationResources2.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Resources.SharedResource.ru-RU.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>LocalizationResources2.ru.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Update="Resources\Resources.SharedResource.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.SharedResource.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Resources.SharedResource.ru-RU.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.SharedResource.ru-RU.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    
+</Project>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="UpdateCalendar_Menu" xml:space="preserve">
+        <value>Update calendar</value>
+    </data>
+    <data name="DeleteCalendar_Menu" xml:space="preserve">
+        <value>Delete calendar</value>
+    </data>
+    <data name="Information_Menu" xml:space="preserve">
+        <value>View profile</value>
+    </data>
+    <data name="UpdateContactData_Menu" xml:space="preserve">
+        <value>Update contact data</value>
+    </data>
+    <data name="UpdateContactDataFromAccount_Menu" xml:space="preserve">
+        <value>Update contact data with telegram profile</value>
+    </data>
+    <data name="ChangeTimezone_Menu" xml:space="preserve">
+        <value>Change Timezone</value>
+    </data>
+    <data name="ChooseAction_Menu" xml:space="preserve">
+        <value>Choose action:</value>
+    </data>
+    <data name="Registration_Message" xml:space="preserve">
+        <value>This bot is designed to notify users about upcoming events in the provided calendar.
+The calendar is supplied via a link to an .ICS file, which can be obtained from Bitrix24 or other platforms.</value>
+    </data>
+    <data name="UpdateCalendar_Message" xml:space="preserve">
+        <value>To provide the calendar link:
+
+In Bitrix24, navigate to: Profile &gt; Calendar &gt; Calendars.
+Click the three dots next to the desired calendar and select Export (iCal).
+Copy the generated link.</value>
+    </data>
+    <data name="UpdateTimezone_Message" xml:space="preserve">
+        <value>To set your time zone:
+Enter your time zone in the format GMT-\+0.
+For example: GMT-0, GMT+3.</value>
+    </data>
+    <data name="CalendarDeleted_Message" xml:space="preserve">
+        <value>Calendar was deleted</value>
+    </data>
+    <data name="CalendarNotDeleted_Message" xml:space="preserve">
+        <value>Calendar was not deleted 'cause calendar or user was not found</value>
+    </data>
+    <data name="ContactData_Menu" xml:space="preserve">
+        <value>Share telegram account data</value>
+    </data>
+    <data name="ShareContactData_Message" xml:space="preserve">
+        <value>Share telegram account data for registration</value>
+    </data>
+    <data name="CalendarUpdated_Message" xml:space="preserve">
+        <value>Calendar was updated</value>
+    </data>
+    <data name="UserNotFound_Message" xml:space="preserve">
+        <value>User not found</value>
+    </data>
+    <data name="MalformedLink_Message" xml:space="preserve">
+        <value>The calendar link is in an incorrect format. You need to send only a link to a file with the .ICS extension.</value>
+    </data>
+    <data name="DataUpdated_Message" xml:space="preserve">
+        <value>Contact data updated</value>
+    </data>
+    <data name="DataNotUpdated_Message" xml:space="preserve">
+        <value>Failed to update contact data</value>
+    </data>
+    <data name="TimezoneChanged_Message" xml:space="preserve">
+        <value>Timezone was changed to '{0}'</value>
+    </data>
+    <data name="UserInfo_Message" xml:space="preserve">
+        <value>*Username*\: {0}
+*Name*\: {1} {2}
+*User id*\: {3}
+*Chat Id*\: {4}
+{5}
+*Timezone*\: {6}
+*Culture*\: {7}
+*Notification time*\: before {8} min</value>
+    </data>
+    <data name="CalendarNotFound_Message" xml:space="preserve">
+        <value>*Calendar was not found*</value>
+    </data>
+    <data name="CalendarLink_Message" xml:space="preserve">
+        <value>Calendar link</value>
+    </data>
+    <data name="TimezoneLimit_Message" xml:space="preserve">
+        <value>Timezone should be in range from GMT-12 to GMT+15</value>
+    </data>
+    <data name="CalendarEvent_Message" xml:space="preserve">
+        <value>&lt;b&gt;{0}&lt;/b&gt;
+&lt;b&gt;Status&lt;/b&gt;: {1}
+&lt;b&gt;Description&lt;/b&gt;: {2}
+&lt;b&gt;Location&lt;/b&gt;: {3}
+&lt;b&gt;Starts at&lt;/b&gt;: {4}
+&lt;b&gt;Duration&lt;/b&gt;: {5} minutes ({6})</value>
+    </data>
+    <data name="UpdateNotificationTime_Message" xml:space="preserve">
+        <value>Provide preferred notification time in minutes.
+Minimal value - 2, Maximal value - 1440, Default - 15.</value>
+    </data>
+    <data name="IncorrectNotificationTime_Message" xml:space="preserve">
+        <value>Please, provide a number between 2 and 1440.</value>
+    </data>
+    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
+        <value>Update notification time</value>
+    </data>
+</root>

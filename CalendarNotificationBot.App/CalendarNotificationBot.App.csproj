@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>f99374fb-6da0-4f86-ae04-b9467adaca6b</UserSecretsId>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\CalendarNotificationBot.Data\CalendarNotificationBot.Data.csproj" />
+      <ProjectReference Include="..\CalendarNotificationBot.Domain\CalendarNotificationBot.Domain.csproj" />
+      <ProjectReference Include="..\CalendarNotificationBot.Infrastructure\CalendarNotificationBot.Infrastructure.csproj" />
+    </ItemGroup>
+    
+</Project>
