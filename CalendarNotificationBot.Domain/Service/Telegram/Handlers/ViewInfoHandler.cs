@@ -91,6 +91,6 @@ public class ViewInfoHandler : IRequestHandler<ViewInfoCommand, UserState?>
 
         _userService.UpdateUserState(request.Message.Chat.Id, UserState.MainMenu);
 
-        return UserState.MainMenu;
+        return null;
     }
 }

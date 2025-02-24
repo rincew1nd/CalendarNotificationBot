@@ -53,7 +53,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ReceiverService>();
         services.AddHostedService<PollingService>();
 
-        services.AddTransient<UpdateUserCalendarsUseCase>();
+        services.AddTransient<UpdateBitrixCalendarsUseCase>();
+        services.AddTransient<UpdateCalendarUseCase>();
         
         services.AddLocalization(options => options.ResourcesPath = "Resources");
         services.Configure<RequestLocalizationOptions>(options =>

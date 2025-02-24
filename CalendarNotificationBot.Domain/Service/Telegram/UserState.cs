@@ -33,7 +33,7 @@ public enum UserState
     /// <summary>
     /// Updating calendar.
     /// </summary>
-    UpdateCalendar = 5,
+    RedownloadCalendar = 5,
     
     /// <summary>
     /// Removing calendar.
@@ -59,4 +59,14 @@ public enum UserState
     /// Update user's notification time.
     /// </summary>
     UpdateNotificationTime = 10,
+    
+    /// <summary>
+    /// Change calendar file.
+    /// </summary>
+    ChangeCalendarFile = 11,
+    
+    /// <summary>
+    /// Get upcoming events.
+    /// </summary>
+    UpcomingEvents = 12,
 }

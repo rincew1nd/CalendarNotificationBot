@@ -7,12 +7,12 @@ namespace CalendarNotificationBot.Domain.UseCases
     /// <summary>.
     /// Download calendar data for users and start update process.
     /// </summary>
-    public class UpdateUserCalendarsUseCase
+    public class UpdateBitrixCalendarsUseCase
     {
         /// <summary>
         /// Logger.
         /// </summary>
-        private readonly ILogger<UpdateUserCalendarsUseCase> _logger;
+        private readonly ILogger<UpdateBitrixCalendarsUseCase> _logger;
         
         /// <summary>
         /// Calendar repository.
@@ -32,8 +32,8 @@ namespace CalendarNotificationBot.Domain.UseCases
         /// <summary>
         /// .ctor
         /// </summary>
-        public UpdateUserCalendarsUseCase(
-            ILogger<UpdateUserCalendarsUseCase> logger,
+        public UpdateBitrixCalendarsUseCase(
+            ILogger<UpdateBitrixCalendarsUseCase> logger,
             ICalendarRepository calendarRepository,
             ICalendarService calendarService,
             IHttpClientFactory httpClientFactory)

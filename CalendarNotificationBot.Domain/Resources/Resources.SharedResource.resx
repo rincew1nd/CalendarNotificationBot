@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="UpdateCalendar_Menu" xml:space="preserve">
+    <data name="ChangeCalendarFile_Menu" xml:space="preserve">
+        <value>Change calendar file</value>
+    </data>
+    <data name="RedownloadCalendar_Menu" xml:space="preserve">
         <value>Update calendar</value>
+    </data>
+    <data name="UpcomingEvents_Menu" xml:space="preserve">
+        <value>Upcoming events</value>
     </data>
     <data name="DeleteCalendar_Menu" xml:space="preserve">
         <value>Delete calendar</value>
@@ -44,11 +50,8 @@
 The calendar is supplied via a link to an .ICS file, which can be obtained from Bitrix24 or other platforms.</value>
     </data>
     <data name="UpdateCalendar_Message" xml:space="preserve">
-        <value>To provide the calendar link:
-
-In Bitrix24, navigate to: Profile &gt; Calendar &gt; Calendars.
-Click the three dots next to the desired calendar and select Export (iCal).
-Copy the generated link.</value>
+        <value>To provide the link to calendar file with .ICS extension.
+Guides to popular calendar services - &lt;a href="https://support.google.com/calendar/answer/37111?hl=en"&gt;Google&lt;/a&gt;, &lt;a href="https://yandex.com/support/calendar/sync/export.html"&gt;Yandex&lt;/a&gt;, &lt;a href="https://helpdesk.bitrix24.com/open/11912374/"&gt;Bitrix24&lt;/a&gt;.</value>
     </data>
     <data name="UpdateTimezone_Message" xml:space="preserve">
         <value>To set your time zone:
@@ -112,6 +115,10 @@ For example: GMT-0, GMT+3.</value>
 &lt;b&gt;Starts at&lt;/b&gt;: {4}
 &lt;b&gt;Duration&lt;/b&gt;: {5} minutes ({6})</value>
     </data>
+    <data name="CalendarEventShort_Message" xml:space="preserve">
+        <value>Name: {0}
+Starts at: {1}</value>
+    </data>
     <data name="UpdateNotificationTime_Message" xml:space="preserve">
         <value>Provide preferred notification time in minutes.
 Minimal value - 2, Maximal value - 1440, Default - 15.</value>
@@ -121,5 +128,24 @@ Minimal value - 2, Maximal value - 1440, Default - 15.</value>
     </data>
     <data name="UpdateNotificationTime_Menu" xml:space="preserve">
         <value>Update notification time</value>
+    </data>
+    <data name="CalendarUpdateTimeout_Message" xml:space="preserve">
+        <value>Calendar update failed.
+One update per 5 minutes</value>
+    </data>
+    <data name="CalendarDownloadFailed_Message" xml:space="preserve">
+        <value>Calendar update failed.
+Error during .ICS download</value>
+    </data>
+    <data name="CalendarDownloadUnexpectedError_Message" xml:space="preserve">
+        <value>Calendar update failed.
+Unknown error</value>
+    </data>
+    <data name="UpcomingEvents_Message" xml:space="preserve">
+        <value>Upcoming events:</value>
+    </data>
+    <data name="UpcomingEventsNotFound_Message" xml:space="preserve">
+        <value>Upcoming events not found.
+Try to update calendar.</value>
     </data>
 </root>

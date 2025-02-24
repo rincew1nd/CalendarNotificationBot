@@ -7,19 +7,26 @@ using MediatR;
 using Microsoft.Extensions.Localization;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace CalendarNotificationBot.Domain.Service.Telegram.Handlers;
 
 /// <summary>
-/// Update calendar command.
+/// Command to change user calendar file.
 /// </summary>
-public record UpdateCalendarCommand(Message Message) : IRequest<UserState?>;
+public record ChangeCalendarFileCommand(Message Message) : IRequest<UserState?>;
 
 /// <summary>
-/// Update calendar.
+/// Change user calendar file.
 /// </summary>
-public partial class UpdateCalendarHandler : IRequestHandler<UpdateCalendarCommand, UserState?>
+public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarFileCommand, UserState?>
 {
+    /// <summary>
+    /// Image path to use as a guide to add bitrix calendar.
+    /// </summary>
+    private const string BitrixCalendarTutorialImage =
+        "BitrixNotificationBot.Domain.Resources.Images.BitrixCalendarGuide.png";
+    
     /// <summary>
     /// Telegram bot client.
     /// </summary>
@@ -53,7 +60,7 @@ public partial class UpdateCalendarHandler : IRequestHandler<UpdateCalendarComma
     /// <summary>
     /// .ctor
     /// </summary>
-    public UpdateCalendarHandler(
+    public ChangeCalendarFileHandler(
         ITelegramBotClient botClient,
         IUserRepository userRepository,
         ICalendarRepository calendarRepository,
@@ -72,13 +79,14 @@ public partial class UpdateCalendarHandler : IRequestHandler<UpdateCalendarComma
     /// <summary>
     /// Handle.
     /// </summary>
-    public async Task<UserState?> Handle(UpdateCalendarCommand request, CancellationToken cancellationToken)
+    public async Task<UserState?> Handle(ChangeCalendarFileCommand request, CancellationToken cancellationToken)
     {
         if (request.Message.ReplyMarkup != null)
         {
             await _botClient.SendMessage(
                 chatId: request.Message.Chat.Id,
                 text: _localizationProvider["UpdateCalendar_Message"],
+                parseMode: ParseMode.Html,
                 cancellationToken: cancellationToken);
             return null;
         }

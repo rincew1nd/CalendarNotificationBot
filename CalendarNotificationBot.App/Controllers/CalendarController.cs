@@ -32,15 +32,15 @@ public class CalendarController : ControllerBase
     /// Update calendar for specified Bitrix user.
     /// </summary>
     /// <param name="bitrixUserId">Bitrix user identifier</param>
-    /// <param name="updateUserCalendarsUseCase"><see cref="UpdateUserCalendarsUseCase"/></param>
+    /// <param name="updateBitrixCalendarsUseCase"><see cref="UpdateBitrixCalendarsUseCase"/></param>
     /// <param name="ct">Cancellation token</param>
     [HttpPatch("update/bitrixUser/{bitrixUserId}")]
     public async Task UpdatePersonCalendarAsync(
         [FromRoute] string bitrixUserId,
-        [FromServices] UpdateUserCalendarsUseCase updateUserCalendarsUseCase,
+        [FromServices] UpdateBitrixCalendarsUseCase updateBitrixCalendarsUseCase,
         CancellationToken ct)
     {
-        await updateUserCalendarsUseCase.Execute(new[] { bitrixUserId }, ct);
+        await updateBitrixCalendarsUseCase.Execute(new[] { bitrixUserId }, ct);
         
         _logger.LogInformation("Update message received for {BitrixUserId}", bitrixUserId);
     }
@@ -49,15 +49,15 @@ public class CalendarController : ControllerBase
     /// Update calendar for the list of Bitrix user.
     /// </summary>
     /// <param name="bitrixUsers"><see cref="BitrixUsersModel"/></param>
-    /// <param name="updateUserCalendarsUseCase"><see cref="UpdateUserCalendarsUseCase"/></param>
+    /// <param name="updateBitrixCalendarsUseCase"><see cref="UpdateBitrixCalendarsUseCase"/></param>
     /// <param name="ct">Cancellation token</param>
     [HttpPatch("update/forBitrixUsers")]
     public async Task UpdatePersonCalendarAsync(
         [FromBody] BitrixUsersModel bitrixUsers,
-        [FromServices] UpdateUserCalendarsUseCase updateUserCalendarsUseCase,
+        [FromServices] UpdateBitrixCalendarsUseCase updateBitrixCalendarsUseCase,
         CancellationToken ct)
     {
-        await updateUserCalendarsUseCase.Execute(bitrixUsers.BitrixUserIds, ct);
+        await updateBitrixCalendarsUseCase.Execute(bitrixUsers.BitrixUserIds, ct);
         
         _logger.LogInformation(
             "Update message received for users: {BitrixUserIds}",

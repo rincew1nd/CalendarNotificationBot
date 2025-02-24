@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="UpdateCalendar_Menu" xml:space="preserve">
+    <data name="ChangeCalendarFile_Menu" xml:space="preserve">
+        <value>Изменить файл календаря</value>
+    </data>
+    <data name="RedownloadCalendar_Menu" xml:space="preserve">
         <value>Обновить календарь</value>
+    </data>
+    <data name="UpcomingEvents_Menu" xml:space="preserve">
+        <value>Предстоящие события</value>
     </data>
     <data name="DeleteCalendar_Menu" xml:space="preserve">
         <value>Удалить календарь</value>
@@ -44,8 +50,9 @@
 Календарь предоставляется ссылкой на .ICS файл, который можно найти как в битриксе так и на других платформах.</value>
     </data>
     <data name="UpdateCalendar_Message" xml:space="preserve">
-        <value>Предоставьте ссылку на календарь.
-Для экспорта календаря в битрексе необходимо пройти по следующему пути: Профиль -&gt; Календарь -&gt; Календари -&gt; Три точки напротив нужного календаря -&gt; Экспорт iCal -&gt; Копировать ссылку</value>
+        <value>Предоставьте ссылку на календарь в .ICS формате.
+Инструкции к популярным календарям - &lt;a href="https://support.google.com/calendar/answer/37111?hl=ru"&gt;Google&lt;/a&gt;, &lt;a href="https://yandex.ru/support/yandex-360/customers/calendar/web/ru/sync/export/"&gt;Yandex&lt;/a&gt;, &lt;a href="https://helpdesk.bitrix24.ru/open/11866202/"&gt;Bitrix24&lt;/a&gt;.
+</value>
     </data>
     <data name="UpdateTimezone_Message" xml:space="preserve">
         <value>Введите ваш часовой пояс в формате *GMT-\+0*.
@@ -109,6 +116,10 @@
 &lt;b&gt;Дата начала&lt;/b&gt;: {4}
 &lt;b&gt;Продолжительность&lt;/b&gt;: {5} минут ({6})</value>
     </data>
+    <data name="CalendarEventShort_Message" xml:space="preserve">
+        <value>Название: {0}
+Дата начала: {1}</value>
+    </data>
     <data name="UpdateNotificationTime_Message" xml:space="preserve">
         <value>Укажите желаемое время оповещения о событии в минутах.
 Минимальное значение - 2, Максимальное значение - 1440, Стандартное - 15</value>
@@ -118,5 +129,24 @@
     </data>
     <data name="UpdateNotificationTime_Menu" xml:space="preserve">
         <value>Обновить время оповещения</value>
+    </data>
+    <data name="CalendarUpdateTimeout_Message" xml:space="preserve">
+        <value>Ошибка при обновлении календаря.
+Одно обновление в течении 5 минут</value>
+    </data>
+    <data name="CalendarDownloadFailed_Message" xml:space="preserve">
+        <value>Ошибка при обновлении календаря.
+Ошибка при скачивании .ICS файла</value>
+    </data>
+    <data name="CalendarDownloadUnexpectedError_Message" xml:space="preserve">
+        <value>Ошибка при обновлении календаря.
+Неизвестная ошибка</value>
+    </data>
+    <data name="UpcomingEvents_Message" xml:space="preserve">
+        <value>Предстоящие события:</value>
+    </data>
+    <data name="UpcomingEventsNotFound_Message" xml:space="preserve">
+        <value>Предстоящие события не найдены.
+Попробуйте обновить календарь.</value>
     </data>
 </root>

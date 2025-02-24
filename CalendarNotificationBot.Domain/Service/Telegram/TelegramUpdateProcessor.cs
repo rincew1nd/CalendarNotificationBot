@@ -139,7 +139,10 @@ public class TelegramUpdateProcessor : IUpdateHandler
             {
                 UserState.ShareContactData => _mediator.Send(new ShareContactDataCommand(message), cancellationToken),
                 UserState.UpdateContactData => _mediator.Send(new UpdateContactDataCommand(message), cancellationToken),
-                UserState.UpdateCalendar => _mediator.Send(new UpdateCalendarCommand(message), cancellationToken),
+                UserState.ChangeCalendarFile =>
+                    _mediator.Send(new ChangeCalendarFileCommand(message), cancellationToken),
+                UserState.RedownloadCalendar =>
+                    _mediator.Send(new RedownloadCalendarCommand(message), cancellationToken),
                 UserState.ViewInfo => _mediator.Send(new ViewInfoCommand(message), cancellationToken),
                 UserState.RemoveCalendar => _mediator.Send(new RemoveCalendarCommand(message), cancellationToken),
                 UserState.UpdateTimeZone => _mediator.Send(new UpdateTimezoneCommand(message), cancellationToken),
@@ -148,6 +151,8 @@ public class TelegramUpdateProcessor : IUpdateHandler
                     _mediator.Send(new UpdateCultureCommand(message, callbackQuery!.Data!), cancellationToken),
                 UserState.UpdateNotificationTime =>
                     _mediator.Send(new UpdateNotificationTimeCommand(message), cancellationToken),
+                UserState.UpcomingEvents =>
+                    _mediator.Send(new UpcomingEventsCommand(message), cancellationToken),
                 _ => _mediator.Send(new MainMenuCommand(message), cancellationToken)
             };
         

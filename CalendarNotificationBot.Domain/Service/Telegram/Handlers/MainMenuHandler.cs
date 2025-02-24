@@ -46,10 +46,16 @@ public class MainMenuHandler : IRequestHandler<MainMenuCommand, UserState?>
             new InlineKeyboardButton[][]
             {
                 [
-                    InlineKeyboardButton.WithCallbackData(_localizationProvider["UpdateCalendar_Menu"],
-                        UserState.UpdateCalendar.ToString()),
+                    InlineKeyboardButton.WithCallbackData(_localizationProvider["ChangeCalendarFile_Menu"],
+                        UserState.ChangeCalendarFile.ToString()),
                     InlineKeyboardButton.WithCallbackData(_localizationProvider["DeleteCalendar_Menu"],
                         UserState.RemoveCalendar.ToString())
+                ],
+                [
+                    InlineKeyboardButton.WithCallbackData(_localizationProvider["RedownloadCalendar_Menu"],
+                        UserState.RedownloadCalendar.ToString()),
+                    InlineKeyboardButton.WithCallbackData(_localizationProvider["UpcomingEvents_Menu"],
+                        UserState.UpcomingEvents.ToString()),
                 ],
                 [
                     InlineKeyboardButton.WithCallbackData(_localizationProvider["UpdateContactData_Menu"],
