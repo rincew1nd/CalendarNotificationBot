@@ -2,6 +2,7 @@
 using CalendarNotificationBot.Data.Repositories.Interfaces;
 using CalendarNotificationBot.Domain.Resources;
 using CalendarNotificationBot.Domain.Service.Interfaces;
+using CalendarNotificationBot.Domain.UseCases;
 using CalendarNotificationBot.Infrastructure.DateTimeProvider;
 using MediatR;
 using Microsoft.Extensions.Localization;
@@ -36,6 +37,11 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
     /// User repository.
     /// </summary>
     private readonly IUserRepository _userRepository;
+    
+    /// <summary>
+    /// User service.
+    /// </summary>
+    private readonly IUserService _userService;
 
     /// <summary>
     /// Calendar repository.
@@ -43,9 +49,10 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
     private readonly ICalendarRepository _calendarRepository;
 
     /// <summary>
-    /// User service.
+    /// Calendar service.
     /// </summary>
-    private readonly IUserService _userService;
+    private readonly UpdateCalendarUseCase _updateCalendarUseCase;
+
 
     /// <summary>
     /// Strings localization provider.
@@ -63,14 +70,16 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
     public ChangeCalendarFileHandler(
         ITelegramBotClient botClient,
         IUserRepository userRepository,
-        ICalendarRepository calendarRepository,
         IUserService userService,
+        ICalendarRepository calendarRepository,
+        UpdateCalendarUseCase updateCalendarUseCase,
         IStringLocalizer<SharedResource> localizationProvider,
         IDateTimeProvider dateTimeProvider)
     {
         _botClient = botClient;
         _userRepository = userRepository;
         _calendarRepository = calendarRepository;
+        _updateCalendarUseCase = updateCalendarUseCase;
         _userService = userService;
         _localizationProvider = localizationProvider;
         _dateTimeProvider = dateTimeProvider;
@@ -104,7 +113,6 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
         
         var calendar = await _calendarRepository.GetByUserIdAsync(user.Id);
         
-        // TODO: Assert that file is compatible calendar.
         if (!Uri.TryCreate(request.Message.Text, UriKind.Absolute, out var uri))
         {
             await _botClient.SendMessage(
@@ -131,15 +139,19 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
             await _calendarRepository.CreateAsync(calendarUri);
         }
         
+        var result = await _updateCalendarUseCase.Execute(user.Id, cancellationToken);
+
         await _botClient.SendMessage(
             chatId: request.Message.Chat.Id,
-            text:
-            _localizationProvider["CalendarUpdated_Message"],
+            text: _localizationProvider[result.message],
             cancellationToken: cancellationToken);
         
-        _userService.UpdateUserState(user.ChatId, UserState.MainMenu);
-        
-        return UserState.MainMenu;
+        if (result.isSuccessfull)
+        {
+            _userService.UpdateUserState(user.ChatId, UserState.MainMenu);
+            return UserState.MainMenu;
+        }
+        return null;
     }
     
     private string? GetBitrixUserId(Uri uri)

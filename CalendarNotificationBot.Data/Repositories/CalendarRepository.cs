@@ -61,6 +61,13 @@ public class CalendarRepository : ICalendarRepository
     }
 
     /// <inheritdoc/>
+    public Task<IEnumerable<Calendar>> GetByUserIdsAsync(Guid[] userIds)
+    {
+        const string sql = @"SELECT * FROM Calendars WHERE ""UserId"" = ANY(@userIds)";
+        return _connection.QueryAsync<Calendar>(sql, new { userIds });
+    }
+
+    /// <inheritdoc/>
     public async Task CreateAsync(Calendar calendar)
     {
         const string sql = """

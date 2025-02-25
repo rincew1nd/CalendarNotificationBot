@@ -40,7 +40,7 @@ public class CalendarController : ControllerBase
         [FromServices] UpdateBitrixCalendarsUseCase updateBitrixCalendarsUseCase,
         CancellationToken ct)
     {
-        await updateBitrixCalendarsUseCase.Execute(new[] { bitrixUserId }, ct);
+        await updateBitrixCalendarsUseCase.Execute(new() { BitrixUserIds = [bitrixUserId] }, ct);
         
         _logger.LogInformation("Update message received for {BitrixUserId}", bitrixUserId);
     }
@@ -57,7 +57,7 @@ public class CalendarController : ControllerBase
         [FromServices] UpdateBitrixCalendarsUseCase updateBitrixCalendarsUseCase,
         CancellationToken ct)
     {
-        await updateBitrixCalendarsUseCase.Execute(bitrixUsers.BitrixUserIds, ct);
+        await updateBitrixCalendarsUseCase.Execute(new() { BitrixUserIds = bitrixUsers.BitrixUserIds }, ct);
         
         _logger.LogInformation(
             "Update message received for users: {BitrixUserIds}",

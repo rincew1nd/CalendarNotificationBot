@@ -20,10 +20,16 @@ public interface ICalendarRepository
     Task<Calendar?> GetByUserIdAsync(Guid id);
     
     /// <summary>
-    /// Get user by Bitrix identifier.
+    /// Get user by Bitrix identifiers.
     /// </summary>
-    /// <param name="bitrixUserIds">User's Bitrix identifier</param>
+    /// <param name="bitrixUserIds">User's Bitrix identifiers</param>
     Task<IEnumerable<Calendar>> GetByBitrixUserIdsAsync(string[] bitrixUserIds);
+    
+    /// <summary>
+    /// Get user by identifiers.
+    /// </summary>
+    /// <param name="userIds">User's identifiers</param>
+    Task<IEnumerable<Calendar>> GetByUserIdsAsync(Guid[] userIds);
     
     /// <summary>
     /// Create calendar.

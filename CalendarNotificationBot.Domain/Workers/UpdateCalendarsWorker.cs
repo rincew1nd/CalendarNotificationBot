@@ -34,7 +34,7 @@ public class UpdateCalendarsWorker : CronWorkerService
         await using var scope = _serviceProvider.CreateAsyncScope();
 
         var updateUserCalendarUseCase = scope.ServiceProvider.GetService<UpdateBitrixCalendarsUseCase>();
-        await updateUserCalendarUseCase!.Execute(null, cancellationToken);
+        await updateUserCalendarUseCase!.Execute(new CalendarUpdateCommand(), cancellationToken);
         
         _logger.LogInformation("Update of user calendars is completed");
     }

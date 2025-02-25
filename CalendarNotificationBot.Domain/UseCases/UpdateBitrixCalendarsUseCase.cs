@@ -43,19 +43,21 @@ namespace CalendarNotificationBot.Domain.UseCases
             _calendarService = calendarService;
             _httpClientFactory = httpClientFactory;
         }
-        
+
         /// <summary>
         /// Execute UseCase.
         /// </summary>
-        /// <param name="bitrixUserIds">User's Bitrix identifiers</param>
-        /// <param name="ct">Cancellation token</param>
-        public async Task Execute(string[]? bitrixUserIds, CancellationToken ct)
+        public async Task Execute(CalendarUpdateCommand command, CancellationToken ct)
         {
             var httpClient = _httpClientFactory.CreateClient();
 
-            var userCalendars = bitrixUserIds == null
-                ? await _calendarRepository.GetAllAsync(true)
-                : await _calendarRepository.GetByBitrixUserIdsAsync(bitrixUserIds);
+            var userCalendars = command switch
+            {
+                { ForceUpdate: true } => await _calendarRepository.GetAllAsync(false),
+                { UserIds: not null } => await _calendarRepository.GetByUserIdsAsync(command.UserIds),
+                { BitrixUserIds: not null } => await _calendarRepository.GetByBitrixUserIdsAsync(command.BitrixUserIds),
+                _ => await _calendarRepository.GetAllAsync(true)
+            };
             
             if (!userCalendars.Any()) return;
             
@@ -86,5 +88,23 @@ namespace CalendarNotificationBot.Domain.UseCases
             
             _calendarService.UpdateCalendars(updatedUserCalendars);
         }
+    }
+
+    public class CalendarUpdateCommand
+    {
+        /// <summary>
+        /// Force update for all available calendars.
+        /// </summary>
+        public bool ForceUpdate { get; set; } = false;
+
+        /// <summary>
+        /// Update calendar for specified users.
+        /// </summary>
+        public Guid[]? UserIds { get; set; } = null;
+        
+        /// <summary>
+        /// Update calendar for specified bitrix users.
+        /// </summary>
+        public string[]? BitrixUserIds { get; set; } = null;
     }
 }

@@ -38,16 +38,15 @@ public static class ServiceCollectionExtensions
         {
             c.CronExpression = configurationManager.GetConfigString("Cron:UpdateCalendar");
         });
-        
         services.AddCronJob<TelegramNotifyWorker>(c =>
         {
             c.CronExpression = configurationManager.GetConfigString("Cron:TelegramNotify");
         });
-        
         services.AddCronJob<UpdateUpcomingEventsWorker>(c =>
         {
             c.CronExpression = configurationManager.GetConfigString("Cron:UpdateUpcomingEvents");
         });
+        services.AddHostedService<InitializeCalendarsJob>();
 
         services.AddScoped<TelegramUpdateProcessor>();
         services.AddScoped<ReceiverService>();
