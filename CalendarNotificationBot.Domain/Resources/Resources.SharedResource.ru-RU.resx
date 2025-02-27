@@ -18,6 +18,18 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="CalendarButton_Menu" xml:space="preserve">
+        <value>Календарь</value>
+    </data>
+    <data name="ContactsButton_Menu" xml:space="preserve">
+        <value>Контакты</value>
+    </data>
+    <data name="SettingsButton_Menu" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="BackButton_Menu" xml:space="preserve">
+        <value>Назад</value>
+    </data>
     <data name="ChangeCalendarFile_Menu" xml:space="preserve">
         <value>Изменить файл календаря</value>
     </data>
@@ -45,6 +57,12 @@
     <data name="ChooseAction_Menu" xml:space="preserve">
         <value>Выберите действие:</value>
     </data>
+    <data name="ContactData_Menu" xml:space="preserve">
+        <value>Поделиться контактными данные телеграм</value>
+    </data>
+    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
+        <value>Обновить время оповещения</value>
+    </data>
     <data name="Registration_Message" xml:space="preserve">
         <value>Данный бот предназначен для нотификации пользователей о предстоящих событиях в предоставленном календаре.
 Календарь предоставляется ссылкой на .ICS файл, который можно найти как в битриксе так и на других платформах.</value>
@@ -63,9 +81,6 @@
     </data>
     <data name="CalendarNotDeleted_Message" xml:space="preserve">
         <value>Календарь не был удалён так как пользователь или календарь не найден</value>
-    </data>
-    <data name="ContactData_Menu" xml:space="preserve">
-        <value>Поделиться контактными данные телеграм</value>
     </data>
     <data name="ShareContactData_Message" xml:space="preserve">
         <value>Отправьте контактные данные в бота для регистрации</value>
@@ -126,9 +141,6 @@
     </data>
     <data name="IncorrectNotificationTime_Message" xml:space="preserve">
         <value>Пожалуйста укажите число между 2 и 1440.</value>
-    </data>
-    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
-        <value>Обновить время оповещения</value>
     </data>
     <data name="CalendarUpdateTimeout_Message" xml:space="preserve">
         <value>Ошибка при обновлении календаря.

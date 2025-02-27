@@ -18,6 +18,18 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="CalendarButton_Menu" xml:space="preserve">
+        <value>Calendar</value>
+    </data>
+    <data name="ContactsButton_Menu" xml:space="preserve">
+        <value>Contacts</value>
+    </data>
+    <data name="SettingsButton_Menu" xml:space="preserve">
+        <value>Settings</value>
+    </data>
+    <data name="BackButton_Menu" xml:space="preserve">
+        <value>Back</value>
+    </data>
     <data name="ChangeCalendarFile_Menu" xml:space="preserve">
         <value>Change calendar file</value>
     </data>
@@ -45,6 +57,12 @@
     <data name="ChooseAction_Menu" xml:space="preserve">
         <value>Choose action:</value>
     </data>
+    <data name="ContactData_Menu" xml:space="preserve">
+        <value>Share telegram account data</value>
+    </data>
+    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
+        <value>Update notification time</value>
+    </data>
     <data name="Registration_Message" xml:space="preserve">
         <value>This bot is designed to notify users about upcoming events in the provided calendar.
 The calendar is supplied via a link to an .ICS file, which can be obtained from Bitrix24 or other platforms.</value>
@@ -63,9 +81,6 @@ For example: GMT-0, GMT+3.</value>
     </data>
     <data name="CalendarNotDeleted_Message" xml:space="preserve">
         <value>Calendar was not deleted 'cause calendar or user was not found</value>
-    </data>
-    <data name="ContactData_Menu" xml:space="preserve">
-        <value>Share telegram account data</value>
     </data>
     <data name="ShareContactData_Message" xml:space="preserve">
         <value>Share telegram account data for registration</value>
@@ -125,9 +140,6 @@ Minimal value - 2, Maximal value - 1440, Default - 15.</value>
     </data>
     <data name="IncorrectNotificationTime_Message" xml:space="preserve">
         <value>Please, provide a number between 2 and 1440.</value>
-    </data>
-    <data name="UpdateNotificationTime_Menu" xml:space="preserve">
-        <value>Update notification time</value>
     </data>
     <data name="CalendarUpdateTimeout_Message" xml:space="preserve">
         <value>Calendar update failed.

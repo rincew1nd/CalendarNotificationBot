@@ -69,7 +69,8 @@ namespace CalendarNotificationBot.Domain.UseCases
                 return (false, "CalendarNotFound_Message");
             }
 
-            if ((_dateTimeProvider.Now - userCalendar.ModificationDate).Minutes < 5)
+            if ((_dateTimeProvider.Now - userCalendar.ModificationDate).Minutes < 5
+                && _calendarService.CalendarExists(userId))
             {
                 _logger.LogWarning("One calendar update per 5 minutes: {UserId}", userId);
                 return (false, "CalendarUpdateTimeout_Message");
@@ -81,8 +82,13 @@ namespace CalendarNotificationBot.Domain.UseCases
                 if (!response.IsSuccessStatusCode) return (true, "CalendarDownloadFailed_Message");
                 
                 var fileContent = await response.Content.ReadAsStringAsync(ct);
-                _calendarService.UpdateCalendars(
+                var result = _calendarService.UpdateCalendars(
                     new Dictionary<Guid, string> { { userCalendar.UserId, fileContent } });
+
+                if (result.TryGetValue(userCalendar.UserId, out var exception))
+                {
+                    throw exception;
+                }
 
                 await _calendarRepository.UpdateAsync(userCalendar);
                 
@@ -94,7 +100,7 @@ namespace CalendarNotificationBot.Domain.UseCases
                     ex,
                     "Exception during calendar update of user '{UserId}'",
                     userCalendar.UserId);
-                return (true, "CalendarDownloadUnexpectedError_Message");
+                return (false, "CalendarDownloadUnexpectedError_Message");
             }
         }
     }

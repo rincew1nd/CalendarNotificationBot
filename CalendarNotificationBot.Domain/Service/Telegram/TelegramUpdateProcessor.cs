@@ -153,7 +153,7 @@ public class TelegramUpdateProcessor : IUpdateHandler
                     _mediator.Send(new UpdateNotificationTimeCommand(message), cancellationToken),
                 UserState.UpcomingEvents =>
                     _mediator.Send(new UpcomingEventsCommand(message), cancellationToken),
-                _ => _mediator.Send(new MainMenuCommand(message), cancellationToken)
+                _ => _mediator.Send(new MainMenuCommand(message, callbackQuery), cancellationToken)
             };
         
             userState = await action;

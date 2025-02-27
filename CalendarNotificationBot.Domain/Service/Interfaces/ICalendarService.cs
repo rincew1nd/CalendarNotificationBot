@@ -11,7 +11,7 @@ public interface ICalendarService
     /// Update user calendars.
     /// </summary>
     /// <param name="calendars">Calendars for users</param>
-    void UpdateCalendars(Dictionary<Guid, string> calendars);
+    Dictionary<Guid, Exception> UpdateCalendars(Dictionary<Guid, string> calendars);
 
     /// <summary>
     /// Update calendars.
@@ -40,4 +40,10 @@ public interface ICalendarService
     /// <param name="userId">User identifier</param>
     /// <returns>List of today's events for a specific user</returns>
     IEnumerable<CalendarEventLocal> GetTodayNotificationsForUser(Guid userId);
+
+    /// <summary>
+    /// Check if user calendar exists.
+    /// </summary>
+    /// <param name="userId">User identifier</param>
+    bool CalendarExists(Guid userId);
 }

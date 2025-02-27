@@ -41,34 +41,45 @@ public class CalendarService : ICalendarService
     #region Calendar and event update
 
     /// <inheritdoc/>
-    public void UpdateCalendars(Dictionary<Guid, string> calendars)
+    public Dictionary<Guid, Exception> UpdateCalendars(Dictionary<Guid, string> calendars)
     {
         var calendarsToUpdate = new List<Guid>();
+        var updateErrors = new Dictionary<Guid, Exception>();
         
         foreach (var calendar in calendars)
         {
-            var calendarHashCode = GetCalendarHashCode(calendar.Value);
-            
-            // If calendar was not updated, ignore it.
-            if (_userCalendars.TryGetValue(calendar.Key, out var existingCalendar)
-                && existingCalendar.HashCode == calendarHashCode)
+            try
             {
-                continue;
+                var calendarHashCode = GetCalendarHashCode(calendar.Value);
+            
+                // If calendar was not updated, ignore it.
+                if (_userCalendars.TryGetValue(calendar.Key, out var existingCalendar)
+                    && existingCalendar.HashCode == calendarHashCode)
+                {
+                    continue;
+                }
+            
+                var calendarObj = ICalCalendar.Load(calendar.Value);
+                var newCalendarUserData = new CalendarUserData(calendar.Key, calendarObj, calendarHashCode);
+            
+                _userCalendars[calendar.Key] = newCalendarUserData;
+                calendarsToUpdate.Add(calendar.Key);
+            
+                _logger.LogInformation("New calendar user {UserGuid}", calendar.Key);
             }
-            
-            var calendarObj = ICalCalendar.Load(calendar.Value);
-            var newCalendarUserData = new CalendarUserData(calendar.Key, calendarObj, calendarHashCode);
-            
-            _userCalendars[calendar.Key] = newCalendarUserData;
-            calendarsToUpdate.Add(calendar.Key);
-            
-            _logger.LogInformation("New calendar user {UserGuid}", calendar.Key);
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error during calendar update '{UserId}'", calendar.Key);
+                updateErrors.Add(calendar.Key, e);
+            }
         }
 
         if (calendarsToUpdate.Any())
         {
             UpdateUpcomingEvents(calendarsToUpdate);
         }
+
+        return updateErrors;
     }
     
     /// <inheritdoc/>
@@ -87,6 +98,12 @@ public class CalendarService : ICalendarService
                 .DistinctBy(o => o.GetHashCode())
                 .ToArray();
         }
+    }
+
+    /// <inheritdoc/>
+    public bool CalendarExists(Guid userId)
+    {
+        return _userCalendars.ContainsKey(userId);
     }
 
     /// <summary>
@@ -111,7 +128,7 @@ public class CalendarService : ICalendarService
         }
         return Enumerable.Empty<CalendarEventLocal>();
     }
-    
+
     /// <inheritdoc/>
     public Dictionary<Guid, HashSet<CalendarEventLocal>> GetUpcomingNotificationsForEveryone(DateTime to)
     {

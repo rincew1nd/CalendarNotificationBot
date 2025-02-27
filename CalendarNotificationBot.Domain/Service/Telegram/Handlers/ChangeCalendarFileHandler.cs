@@ -23,12 +23,6 @@ public record ChangeCalendarFileCommand(Message Message) : IRequest<UserState?>;
 public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarFileCommand, UserState?>
 {
     /// <summary>
-    /// Image path to use as a guide to add bitrix calendar.
-    /// </summary>
-    private const string BitrixCalendarTutorialImage =
-        "BitrixNotificationBot.Domain.Resources.Images.BitrixCalendarGuide.png";
-    
-    /// <summary>
     /// Telegram bot client.
     /// </summary>
     private readonly ITelegramBotClient _botClient;
@@ -37,7 +31,6 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
     /// User repository.
     /// </summary>
     private readonly IUserRepository _userRepository;
-    
     /// <summary>
     /// User service.
     /// </summary>
@@ -52,8 +45,7 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
     /// Calendar service.
     /// </summary>
     private readonly UpdateCalendarUseCase _updateCalendarUseCase;
-
-
+    
     /// <summary>
     /// Strings localization provider.
     /// </summary>
@@ -151,7 +143,11 @@ public partial class ChangeCalendarFileHandler : IRequestHandler<ChangeCalendarF
             _userService.UpdateUserState(user.ChatId, UserState.MainMenu);
             return UserState.MainMenu;
         }
-        return null;
+        else
+        {
+            await _calendarRepository.DeleteAsync(user.Id);
+            return null;
+        }
     }
     
     private string? GetBitrixUserId(Uri uri)

@@ -43,53 +43,62 @@ namespace CalendarNotificationBot.Domain.UseCases
             _calendarService = calendarService;
             _httpClientFactory = httpClientFactory;
         }
-
+        
         /// <summary>
         /// Execute UseCase.
         /// </summary>
         public async Task Execute(CalendarUpdateCommand command, CancellationToken ct)
         {
-            var httpClient = _httpClientFactory.CreateClient();
-
-            var userCalendars = command switch
+            try
             {
-                { ForceUpdate: true } => await _calendarRepository.GetAllAsync(false),
-                { UserIds: not null } => await _calendarRepository.GetByUserIdsAsync(command.UserIds),
-                { BitrixUserIds: not null } => await _calendarRepository.GetByBitrixUserIdsAsync(command.BitrixUserIds),
-                _ => await _calendarRepository.GetAllAsync(true)
-            };
-            
-            if (!userCalendars.Any()) return;
-            
-            Dictionary<Guid, string> updatedUserCalendars = new();
-            
-            await Parallel.ForEachAsync(
-                userCalendars,
-                new ParallelOptions { MaxDegreeOfParallelism = 3 },
-                async (userCalendar, _) =>
+                var httpClient = _httpClientFactory.CreateClient();
+
+                var userCalendars = command switch
                 {
-                    try
+                    { ForceUpdate: true } => await _calendarRepository.GetAllAsync(false),
+                    { UserIds: not null } => await _calendarRepository.GetByUserIdsAsync(command.UserIds),
+                    { BitrixUserIds: not null } => await _calendarRepository.GetByBitrixUserIdsAsync(
+                        command.BitrixUserIds),
+                    _ => await _calendarRepository.GetAllAsync(true)
+                };
+
+                if (!userCalendars.Any()) return;
+
+                Dictionary<Guid, string> updatedUserCalendars = new();
+
+                await Parallel.ForEachAsync(
+                    userCalendars,
+                    new ParallelOptions { MaxDegreeOfParallelism = 3 },
+                    async (userCalendar, _) =>
                     {
-                        var response = await httpClient.GetAsync(userCalendar.CalendarUrl, ct);
-                        if (response.IsSuccessStatusCode)
+                        try
                         {
-                            var fileContent = await response.Content.ReadAsStringAsync(ct);
-                            updatedUserCalendars.Add(userCalendar.UserId, fileContent);
+                            var response = await httpClient.GetAsync(userCalendar.CalendarUrl, ct);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var fileContent = await response.Content.ReadAsStringAsync(ct);
+                                updatedUserCalendars.Add(userCalendar.UserId, fileContent);
+                            }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(
-                            ex,
-                            "Exception during calendar update of user '{UserId}'",
-                            userCalendar.UserId);
-                    }
-                });
-            
-            _calendarService.UpdateCalendars(updatedUserCalendars);
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(
+                                ex,
+                                "Exception during calendar update of user '{UserId}'",
+                                userCalendar.UserId);
+                        }
+                    });
+
+                _calendarService.UpdateCalendars(updatedUserCalendars);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
-
+    
     public class CalendarUpdateCommand
     {
         /// <summary>
